@@ -313,10 +313,6 @@ namespace FavoritesSorter
 			v1 = start;
 			v2 = middle;
 
-
-			// I think I want to see which list is longest, then take the first element of the OTHER list, and do a binary search to find where it belongs.
-			// Once I move that position, then the remaining longest list goes next
-
 			while (v1 < v2 && v2 < end)
 			{
 				// Search for where v2's element should be inserted among elements from v1 to v2-1.
