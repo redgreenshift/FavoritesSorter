@@ -357,10 +357,9 @@ namespace FavoritesSorter
 		/// <param name="start">The starting index of the range to sort (inclusive).</param>
 		/// <param name="end">The ending index of the range to sort (exclusive).</param>
 		private void mergeSortBinary(string[] theList, int start, int end)
-			// AI: Recursive divide-and-conquer sort. Divides the list in half at "middle", sorts both halves, then merges them using binary search to find where each element should go.The merge step uses mergeBinary which calls determineWhereToMove.
-            // AI: Recursive divide-and-conquer sort. Divides the list in half at "middle", then merges them using binary search.
         {
-			if (end - start < 2)
+            // Recursive divide-and-conquer sort. Divides the list in half at "middle", sorts both halves, then merges them using binary search to find where each element should go.
+            if (end - start < 2)
 				return;
 
 			int middle = (start + end) / 2;
