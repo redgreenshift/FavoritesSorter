@@ -96,16 +96,15 @@ namespace FavoritesSorter
 			return compareWithMemory(theList, v1, v2);
 		}
 
-		/// <summary>
-		/// Compares two elements in the list using a binary search approach.
-		/// </summary>
-		/// <param name="theList">The list containing the elements to compare.</param>
-		/// <param name="v1">The index of the first element.</param>
-		/// <param name="v2">The index of the second element.</param>
-		/// <returns>True if the first element comes before the second in the sorted order; otherwise, false.</returns>
-		private bool compareBinary(string[] theList, int v1, int v2)
-			// AI: Delegate to compareWithMemory so the comparison result is cached for future lookups.Same behavior as compareLinear but ensures caching.
-            // AI: Delegate to compareWithMemory so the comparison result is cached.
+        /// <summary>
+        /// Compares two elements in the list using a binary search approach.
+        /// the comparison result is cached for future lookups
+        /// </summary>
+        /// <param name="theList">The list containing the elements to compare.</param>
+        /// <param name="v1">The index of the first element.</param>
+        /// <param name="v2">The index of the second element.</param>
+        /// <returns>True if the first element comes before the second in the sorted order; otherwise, false.</returns>
+        private bool compareBinary(string[] theList, int v1, int v2)
         {
 			return compareWithMemory(theList, v1, v2);
 		}
