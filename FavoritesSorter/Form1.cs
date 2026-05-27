@@ -265,9 +265,11 @@ namespace FavoritesSorter
         private int determineWhereToMove(string[] theList, int start, int end, int source)
         {
             if (start == source)
+                // source belongs at position 'start', which is the first
+                // position not yet confirmed to be smaller than source.
                 return start;
 
-			if (start >= end)
+            if (start >= end)
 			{
                 // When start == end, we've checked one position. The element at 'start' is our insertion point.
                 // Return start + 1 so the caller can place 'source' after this position.
