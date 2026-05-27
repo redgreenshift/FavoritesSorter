@@ -11,5 +11,5 @@ Enter your favorite TV shows, movies, books (etc) in the text box, one per line,
 
 ## Features
 
-- Simple, MessageBox dialog for pairwise comparisons (want to update to labeled buttons and resizable dialog).
+- Resizable custom dialog for pairwise comparisons (with labeled buttons).
 - Memory cache avoids asking the same comparison twice.
