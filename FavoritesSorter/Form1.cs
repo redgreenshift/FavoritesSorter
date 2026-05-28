@@ -61,15 +61,15 @@ namespace FavoritesSorter
             }
 		}
 
-		#region Merge Sort Linear
-		/// <summary>
-		/// Compares two elements in the list.
-		/// </summary>
-		/// <param name="theList">The list containing the elements to compare.</param>
-		/// <param name="v1">The index of the first element.</param>
-		/// <param name="v2">The index of the second element.</param>
-		/// <returns>True if the first element is considered better than the second; otherwise, false.</returns>
-		private bool compare(string[] theList, int v1, int v2)
+        #region Merge Sort Linear
+        /// <summary>
+        /// Compares two elements in the list.
+        /// </summary>
+        /// <param name="theList">The list containing the elements to compare.</param>
+        /// <param name="v1">The index of the first element.</param>
+        /// <param name="v2">The index of the second element.</param>
+        /// <returns>True if theList[v1] sorts before theList[v2]; otherwise, false.</returns>
+        private bool compare(string[] theList, int v1, int v2)
 		{
 			++comparisons;
 #if TESTING
@@ -90,7 +90,7 @@ namespace FavoritesSorter
         /// <param name="theList">The list containing the elements to compare.</param>
         /// <param name="v1">The index of the first element.</param>
         /// <param name="v2">The index of the second element.</param>
-        /// <returns>True if the first element comes before the second in the sorted order; otherwise, false.</returns>
+        /// <returns>True if theList[v1] sorts before theList[v2]; otherwise, false.</returns>
         private bool compareLinear(string[] theList, int v1, int v2)
 		{
 			return compareWithMemory(theList, v1, v2);
@@ -103,7 +103,7 @@ namespace FavoritesSorter
         /// <param name="theList">The list containing the elements to compare.</param>
         /// <param name="v1">The index of the first element.</param>
         /// <param name="v2">The index of the second element.</param>
-        /// <returns>True if the first element comes before the second in the sorted order; otherwise, false.</returns>
+        /// <returns>True if theList[v1] sorts before theList[v2]; otherwise, false.</returns>
         private bool compareBinary(string[] theList, int v1, int v2)
         {
 			return compareWithMemory(theList, v1, v2);
@@ -113,13 +113,13 @@ namespace FavoritesSorter
         /// Compares two elements in the list by prompting the user for input, and records the result in memory for future comparisons.
         /// </summary>
         /// <param name="theList">The list containing the elements to compare.</param>
-        /// <param name="start">The index of the first element.</param>
-        /// <param name="end">The index of the second element.</param>
-        /// <returns>True if the first element is considered "better" than the second; otherwise, false.</returns>
-        /// <remarks>Throws an exception if the user cancels the prompt, indicating that the sort operation should be aborted.</remarks>
-        private bool compareWithPrompt(string[] theList, int start, int end)
+        /// <param name="v1">The index of the first element.</param>
+        /// <param name="v2">The index of the second element.</param>
+        /// <returns>True if theList[v1] sorts before theList[v2]; otherwise, false.</returns>
+        /// <exception cref="OperationCanceledException">Thrown if the user cancels the prompt, indicating that the sort operation should be aborted.</exception>
+        private bool compareWithPrompt(string[] theList, int v1, int v2)
 		{
-			var res = CustomDialogForm.ShowDialog(this, "Which do you prefer?", "Pick One", theList[start], theList[end]);
+			var res = CustomDialogForm.ShowDialog(this, "Which do you prefer?", "Pick One", theList[v1], theList[v2]);
 			if (res == CustomDialogResult.Button1)
 			{
 				return true; /* (first button clicked) */
@@ -140,7 +140,7 @@ namespace FavoritesSorter
         /// <param name="theList">The list containing the elements to compare.</param>
         /// <param name="v1">The index of the first element.</param>
         /// <param name="v2">The index of the second element.</param>
-        /// <returns>Returns true if the element at v1 sorts before the element at v2; otherwise, false.</returns>
+        /// <returns>True if theList[v1] sorts before theList[v2]; otherwise, false.</returns>
         private bool compareNoPrompt(string[] theList, int v1, int v2)
         {
 			string s1 = theList[v1];
@@ -161,10 +161,12 @@ namespace FavoritesSorter
 			v1 = start;
 			v2 = middle;
 
-			// The while loop runs while v2's position is between v1 (current position in the left partition) and end.
-			// v1 advances through the left partition, v2 through the right. When v2 reaches the end,
-			// all elements in the partition have been examined and v2's element is correctly placed.
-			while (v1 < v2 && v2 < end)
+            // The while loop compares elements from the first partition against the element at v2.
+            // v1 advances through the left partition, v2 through the right.
+            // If v1 catches up to v2, all elements in the first partition are confirmed
+            // to be smaller than v2, so the element at v2 is in its correct final position.
+            // The second condition (v2 < end) exits if v2 has been placed after all elements.
+            while (v1 < v2 && v2 < end)
 			{
 				if (compareLinear(theList, v1, v2))
 				{
@@ -210,14 +212,14 @@ namespace FavoritesSorter
 
 		private System.Collections.Generic.Dictionary<string, bool> theMemory;
 
-		/// <summary>
-		/// Compares two elements in the list using a memory cache to avoid redundant comparisons.
-		/// </summary>
-		/// <param name="theList">The list containing the elements to compare.</param>
-		/// <param name="v1">The index of the first element.</param>
-		/// <param name="v2">The index of the second element.</param>
-		/// <returns>True if the first element sorts before the second; otherwise, false.</returns>
-		private bool compareWithMemory(string[] theList, int v1, int v2)
+        /// <summary>
+        /// Compares two elements in the list using a memory cache to avoid redundant comparisons.
+        /// </summary>
+        /// <param name="theList">The list containing the elements to compare.</param>
+        /// <param name="v1">The index of the first element.</param>
+        /// <param name="v2">The index of the second element.</param>
+        /// <returns>True if theList[v1] sorts before theList[v2]; otherwise, false.</returns>
+        private bool compareWithMemory(string[] theList, int v1, int v2)
         {
 			string s1 = theList[v1];
 			string s2 = theList[v2];
@@ -235,15 +237,15 @@ namespace FavoritesSorter
 			// This ensures consistent lookups regardless of comparison direction.
 			if (theMemory.ContainsKey(key))
 			{
-                // previously-computed comparison of the two elements, return it
+                // Previously computed the answer; return from memory.
                 if (isReversed)
 					return !theMemory[key];
 				else
 					return theMemory[key];
 			}
 
-			// Answers are recorded in theMemory dictionary and looked up on subsequent comparisons.
-			bool retVal = compare(theList, v1, v2);
+            // Record the answer so we don't prompt the user a second time for this pair of options (regardless of the order they are compared).
+            bool retVal = compare(theList, v1, v2);
 
             if (isReversed)
 				theMemory[key] = !retVal;
@@ -254,8 +256,7 @@ namespace FavoritesSorter
 		}
 
         /// <summary>
-        /// Determines the position where the element at index <b>source</b> should be inserted within the specified range using a binary search approach.
-        /// <br></br>Binary search to find where the element at position <b>source</b> should be inserted within the range[start, end]
+        /// Determines the position where the element at index <b>source</b> should be inserted using a binary search within the range [start, end].
         /// </summary>
         /// <param name="theList">The list containing the elements to search.</param>
         /// <param name="start">The starting index of the range to search.</param>
@@ -315,9 +316,9 @@ namespace FavoritesSorter
 
 			while (v1 < v2 && v2 < end)
 			{
-				// Search for where v2's element should be inserted among elements from v1 to v2-1.
-				// The range v1..v2-1 contains the "next" partition, and we find the correct insertion point.
-				int destination = determineWhereToMove(theList, v1, v2 - 1, v2);
+                // Search for where v2's element should be inserted among elements from v1 to v2-1.
+                // The range v1..v2-1 contains the "next" partition, and we find the correct insertion point.
+                int destination = determineWhereToMove(theList, v1, v2 - 1, v2);
 
 				// When destination == v2, it means v2's element belongs at position v2 itself
 				// (it's greater than all elements from v1 to v2-1). We can stop merging because
