@@ -19,6 +19,6 @@ Enter your favorite TV shows, movies, books (etc) in the text box, one per line,
 - Resizable custom dialog for pairwise comparisons (with labeled buttons).
 - Memory cache avoids asking the same comparison twice.
 
-### AI Policy
+## AI Policy
 
 Contributions from AI agents are welcome so long as they're reviewed by humans before committing — all changes MUST be approved by a real person, not merely accepted by an automated process or another agent.
