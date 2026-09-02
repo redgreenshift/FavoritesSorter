@@ -206,11 +206,9 @@ namespace FavoritesSorter
 			mergeSortLinear(theList, middle /* + 1 wrong????*/, end);
 			mergeLinear(theList, start, middle, end);
 		}
-#endregion
+        #endregion // Merge Sort Linear
 
-		#region Merge Sort BinarySearch
-
-		private System.Collections.Generic.Dictionary<string, bool> theMemory;
+        private System.Collections.Generic.Dictionary<string, bool> theMemory;
 
         /// <summary>
         /// Compares two elements in the list using a memory cache to avoid redundant comparisons.
@@ -254,6 +252,8 @@ namespace FavoritesSorter
 
 			return retVal;
 		}
+
+        #region Merge Sort BinarySearch
 
         /// <summary>
         /// Determines the position where the element at index <b>source</b> should be inserted using a binary search within the range [start, end].
@@ -366,7 +366,7 @@ namespace FavoritesSorter
 			mergeSortBinary(theList, middle, end);
 			mergeBinary(theList, start, middle, end);
 		}
-        #endregion
+        #endregion // Merge Sort BinarySearch
 
     }
 
