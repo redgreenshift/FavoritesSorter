@@ -1,39 +1,20 @@
-//Define this symbol to use compareNoPrompt for testing without user interaction.
-//Undefine it to use compareWithPrompt which prompts the user for comparisons.
-//#define TESTING
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Globalization;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using static System.Windows.Forms.AxHost;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace FavoritesSorter
 {
     public partial class Form1 : Form
     {
         private string[] theListToSort = null;
-        private System.Collections.Generic.Dictionary<string, bool> theMemory;
         private bool userAborted = false;
 
         // Initialize the form and create the memory dictionary used to cache comparison results.
         public Form1()
         {
             InitializeComponent();
-            theMemory = new Dictionary<string, bool>();
         }
-
 
         /// <summary>
         /// Displays a custom message box dialog to let the user choose between two specified options.
@@ -70,10 +51,7 @@ namespace FavoritesSorter
         {
             char[] delimiters = { '\r', '\n' };
             theListToSort = textBox1.Text.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
-
-            theMemory.Clear();
             userAborted = false;
-
 
             try
             {

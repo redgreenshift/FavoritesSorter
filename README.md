@@ -15,7 +15,7 @@ then click **Sort**. The program asks you which of the two you prefer, building 
 ## Features
 
 - Resizable custom dialog for pairwise comparisons (with labeled buttons).
-- Memory cache avoids asking the same comparison twice.
+- Memoization: Caches results to avoid asking the same question twice.
 
 ## AI Policy
 
