@@ -70,9 +70,7 @@ namespace FavoritesSorter
                 return;
             }
 
-            Thread.Sleep(100);
-
-            textBox1.Text = string.Join(Environment.NewLine, theListToSort, 0, theListToSort.Length);
+            textBox1.Text = string.Join(Environment.NewLine, theListToSort);
         }
     }
 }
