@@ -9,10 +9,8 @@ A program to interactively sort your favorite things through pairwise comparison
 
 ## How it works
 
-Enter your favorite TV shows, movies, books (etc) in the text box, one per line, then click **Sort**. The program asks you which of the two you prefer, building a sorted list. Two algorithms are available:
-
-- **Linear merge sort** — compares adjacent elements in each partition as it merges.
-- **Binary merge sort** — uses binary search to find where each element belongs, reducing the number of comparisons in some cases.
+Enter your favorite TV shows, movies, books (etc) in the text box, one per line,
+then click **Sort**. The program asks you which of the two you prefer, building a sorted list.
 
 ## Features
 
@@ -21,4 +19,10 @@ Enter your favorite TV shows, movies, books (etc) in the text box, one per line,
 
 ## AI Policy
 
-Contributions from AI agents are welcome so long as they're reviewed by humans before committing — all changes MUST be approved by a real person, not merely accepted by an automated process or another agent.
+Contributions from AI agents are welcome, provided they are reviewed by a
+human before being committed. Every change MUST be approved by a real person;
+approval by an automated process or another AI agent alone is insufficient.
+
+AI tools may be used to suggest code ideas or help draft comments, but all
+code is reviewed by the project author before committing. Code that the
+author does not fully understand is not committed.
