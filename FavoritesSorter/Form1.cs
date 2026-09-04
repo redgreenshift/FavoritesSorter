@@ -21,8 +21,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace FavoritesSorter
 {
-	public partial class Form1 : Form
-	{
+    public partial class Form1 : Form
+    {
         private string[] theListToSort = null;
         private System.Collections.Generic.Dictionary<string, bool> theMemory;
         private bool userAborted = false;
