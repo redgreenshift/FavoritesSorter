@@ -9,8 +9,9 @@ A program to interactively sort your favorite things through pairwise comparison
 
 ## How it works
 
-Enter your favorite TV shows, movies, books (etc) in the text box, one per line,
-then click **Sort**. The program asks you which of the two you prefer, building a sorted list.
+Enter your favorite TV shows, movies, books, etc., in the text box, one per line,
+then click **Sort**. The program asks you which of the two you prefer, building a
+sorted list through iterative comparisons.
 
 ## Features
 
