@@ -10,7 +10,6 @@ namespace FavoritesSorter
         private string[] theListToSort = null;
         private bool userAborted = false;
 
-        // Initialize the form and create the memory dictionary used to cache comparison results.
         public Form1()
         {
             InitializeComponent();
