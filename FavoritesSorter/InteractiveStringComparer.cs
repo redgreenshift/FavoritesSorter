@@ -39,7 +39,7 @@ namespace FavoritesSorter
         /// memoized in the <see cref="Decisions"/> dictionary.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the initial comparison result from <paramref name="prompt"/> is outside the range of -1 to 1,
         /// indicating an invalid comparator result. The actual value being compared is unknown at this point.</exception>
-        public int Compare(string x, string y)
+        public int Compare(string? x, string? y)
         {
             if (ReferenceEquals(x, y))
                 return 0;

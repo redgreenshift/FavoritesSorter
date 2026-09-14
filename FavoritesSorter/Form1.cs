@@ -7,7 +7,7 @@ namespace FavoritesSorter
 {
     public partial class Form1 : Form
     {
-        private string[] theListToSort = null;
+        private string[]? theListToSort = null;
         private bool userAborted = false;
 
         public Form1()
